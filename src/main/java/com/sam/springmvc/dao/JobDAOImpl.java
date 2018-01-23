@@ -94,19 +94,19 @@ public class JobDAOImpl implements JobDAO {
 
 	@Override
 	public int updateJob1(Job job) {
-		String sql="update db1.job_tbl set job_description = (REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(job_description,\"ï??\",'<li>'), \"ï?¶\",'<li>'),\"ï?§\",'<li>'),\"â?¢\",'<li>'),\"ï?¼\",'<li>'),\"-\",'<li>')) where id="+job.getId()+""; 
+		String sql="update job_tbl set job_description = (REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(job_description,\"ï??\",'<li>'), \"ï?¶\",'<li>'),\"ï?§\",'<li>'),\"â?¢\",'<li>'),\"ï?¼\",'<li>'),\"-\",'<li>')) where id="+job.getId()+""; 
 	    return jdbcTemplate.update(sql); 
 	}
 
 	@Override
 	public int updateJobResponses(Job job) {
-		String sql="UPDATE db1.job_tbl SET responses = (SELECT COUNT(*) FROM db1.job_seeker_application WHERE position = 'SAMJID_01') where jobid='"+job.getJobid()+"'";
+		String sql="UPDATE job_tbl SET responses = (SELECT COUNT(*) FROM db1.job_seeker_application WHERE position = 'SAMJID_01') where jobid='"+job.getJobid()+"'";
 		return jdbcTemplate.update(sql);
 	}
 
 	@Override
 	public int updateResponses(int count,String jobid) {
-		String sql="UPDATE db1.job_tbl SET responses = '"+count+"' where jobid='"+jobid+"'";
+		String sql="UPDATE job_tbl SET responses = '"+count+"' where jobid='"+jobid+"'";
 		return jdbcTemplate.update(sql);	
 	}
 	

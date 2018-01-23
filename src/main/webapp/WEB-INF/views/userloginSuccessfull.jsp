@@ -200,9 +200,9 @@
 					            <tr>
 					                <td colspan="2"><input type="submit" value="Apply" class="btn btn-info" ></td>
 					            </tr>
-					            </c:if>
 					            <a href="${contextPath}/newuser?jobid=${job.jobid}" class="btn btn-info" style="background-color: #ace600;" role="button">Register and Apply</a>
-					        </table>
+					            </c:if>
+					       </table>
 				        </form:form>
 				    </div>
 					

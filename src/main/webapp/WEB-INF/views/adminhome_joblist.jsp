@@ -170,6 +170,8 @@
                     	<th style="text-align:left;color: black">Posted Date</th>
                     	<th style="text-align:left;color: black">PostedBy</th>
                     	<th style="text-align:left;color: black">Responses</th>
+                    	<th style="text-align:center;color: black">Edit/Delete</th>
+                    	
                     	<th><em class="fa fa-cog" style="text-align: center"></em></th>
                     	
           </tr>  
