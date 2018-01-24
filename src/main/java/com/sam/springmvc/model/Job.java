@@ -38,7 +38,7 @@ public class Job implements Serializable {
 	private Date date=new Date();
 	private Time time;
 	private String keyskills;
-	private String job_designation;
+	private String location;
 	private String job_description;
 	private String description;
 	private String experience;
@@ -58,7 +58,7 @@ public class Job implements Serializable {
 		
 	}
 
-	public Job(int id, String jobid, String job_name, Date date,String keyskills, String job_designation,
+	public Job(int id, String jobid, String job_name, Date date,String keyskills, String location,
 			String job_description,String description, String experience, String job_type, String companyname, String Salary,
 			String Functionalarea, String shortdescription, String status, String responses, String postedBy) {
 		super();
@@ -67,7 +67,7 @@ public class Job implements Serializable {
 		this.job_name = job_name;
 		this.date=date;
 		this.keyskills = keyskills;
-		this.job_designation = job_designation;
+		this.location = location;
 		this.job_description = job_description;
 		this.description = description;
 		this.experience = experience;
@@ -120,11 +120,11 @@ public class Job implements Serializable {
 	public void setKeyskills(String keyskills) {
 		this.keyskills = keyskills;
 	}
-	public String getJob_designation() {
-		return job_designation;
+	public String getLocation() {
+		return location;
 	}
-	public void setJob_designation(String job_designation) {
-		this.job_designation = job_designation;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public String getJob_description() {
 		return job_description;
@@ -209,7 +209,6 @@ public class Job implements Serializable {
 	public void setPostedBy(String postedBy) {
 		this.postedBy = postedBy;
 	}
-	
 	
 
 }

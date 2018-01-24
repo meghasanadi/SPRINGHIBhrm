@@ -129,17 +129,14 @@
                              <%--  <a href="viewDetails?id=${job.id}"><em class="fa fa-pencil"></em></a> --%>
                             </td>
                                 <td><h6>JobID:${job.jobid}</h6><br></td>
-                                <td><div style="text-align: justify">description:${job.job_description}</div><br></td><br>
+                                <td><div style="text-align: justify"><b>description:</b>${job.job_description}</div><br></td><br>
                                 
-                                <td><div style="text-align: justify">Roles:${job.job_description}</div><br></td><br>
-                                <td><div style="text-align: justify">Responsibilities:${job.roles}</div><br></td><br>
+                                <td><div style="text-align: justify"><b>Roles and Responsibilities:</b>${job.roles}</div><br></td><br>
                                 
 	                            <td><b>Salary :</b> ${job.salary}</td><br>
-	                            <td><b>Functional area : </b>${job.functionalarea}</td><br>
 	                            <td><b>Role : </b>${job.job_name}</td><br>
-	                            <td><b>Location :</b>${job.job_designation}</td><br>
+	                            <td><b>Location :</b>${job.location}</td><br>
 	                            <td><b>Experience :</b>${job.experience}</td><br>
-	                            <td><b>Company Name :</b> ${job.companyname}</td><br>
 	                            <td><b>Job Type :</b> ${job.job_type}</td><br>
 
                             </tr>

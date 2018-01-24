@@ -3,6 +3,7 @@ package com.sam.springmvc.controller;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -153,5 +154,47 @@ public class ApplicationController {
 	        return "redirect:/viewApplicantDetails";
 	    }
 	   
+	   @RequestMapping(value =  "/addnewjob", method = RequestMethod.GET)
+		public ModelAndView addnewjob(ModelMap model1,ModelAndView model) throws IOException {
+
+		     Job job = new Job();
+			 model.addObject("job", job);
+		   
+			 List<String> status = new ArrayList<String>();
+			 status.add("Active");
+			 status.add("Inactive");
+	         model1.addAttribute("status", status);
+	         
+	         List<String> jobtype = new ArrayList<String>();
+	         jobtype.add("Contract");
+	         jobtype.add("Contract to hire");
+	         jobtype.add("Permanant/Fulltime");
+	         model1.addAttribute("jobtype", jobtype);
+	         
+	         List<String> location=new ArrayList<String>();
+	         location.add("Anywhere in India");
+	         location.add("Bangalore");
+	         location.add("Chennai");
+	         location.add("Gurgaon");
+	         location.add("Hyderabad");
+	         location.add("Mumbai");
+	         location.add("Pune");
+	         model1.addAttribute("location", location);
+	        
+
+	 		 model1.addAttribute("loggedinuser", getPrincipal());
+	 		 model.setViewName("addEditnewjob");
+	 		 return model;
+
+		}
+	   
+	   @RequestMapping(value="/format",method = RequestMethod.GET)
+	   public String format(ModelAndView modelview, Job job, @RequestParam("id") int id) {
+	   System.out.println("jobid and id :" +job.getJobid()+id);
+
+		jobService.updateJob1(id);   
+		return "redirect:/list";
+		   
+	   }
 	   
 }

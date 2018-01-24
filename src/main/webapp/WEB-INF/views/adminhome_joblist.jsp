@@ -157,10 +157,19 @@
 			</style>
 </head>  
 <body style="margin:20px auto">  
+
+		<nav class="navbar navbar-light bg-light">
+		<div class="container">
+		      
+		        <a class="navbar-brand" href="http://careers.samcomm.com"/><img src="http://companies.naukri.com/samcomm-careers/wp-content/uploads/sites/1322/2014/11/logo.png" alt="Samcomm Technologies" title="Samcomm Technologies">
+		        </a>
+		      </div>
+		</nav>
+		
 <div class="container">
  <h5><%@include file="authheader.jsp" %></h5> 
 <div class="row header" style="color:#00a1ff!important">
-<h3 align="center">Job List</h3>
+<h3 align="center">Requirements</h3>
 </div>
     <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap">  
         <thead>  
@@ -172,8 +181,8 @@
                     	<th style="text-align:left;color: black">Responses</th>
                     	<th style="text-align:center;color: black">Edit/Delete</th>
                     	
-                    	<th><em class="fa fa-cog" style="text-align: center"></em></th>
-                    	
+<!--                     	<th><em class="fa fa-cog" style="text-align: center"></em></th>
+ -->                    	
           </tr>  
         </thead>  
         <tbody>
@@ -183,20 +192,19 @@
                             <td>${job.job_name} </td>
                             <td><fmt:formatDate value="${job.date}" pattern="dd-MM-yyyy" /></td>
                             <td>${job.postedBy}</td>
-<%--                             <td><a href="viewResponses?jobid=${job.jobid}">${job.responses}</a><a href="refreshresponse?jobid=${job.jobid}">Refresh</a></td><a href="refreshresponse?jobid=${job.jobid}"><img border="0" alt="W3Schools" src="logo_w3s.gif" width="100" height="100"></a>
- --%>                            <td><a href="viewResponses?jobid=${job.jobid}" style="margin-right:20px">${job.responses}</a><a href="refreshresponse?jobid=${job.jobid}"><img border="0" alt="W3Schools" src="http://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Button-Refresh-icon.png" width="25" height="25" ></a>
+                            <td><a href="viewResponses?jobid=${job.jobid}" style="margin-right:20px">${job.responses}</a><a href="refreshresponse?jobid=${job.jobid}"><img border="0" alt="W3Schools" src="http://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Button-Refresh-icon.png" width="25" height="25" ></a>
  
- 
-                              <td align="center">
+                             <td align="center">
 	                              <a href="editJob2?id=${job.id}">Format | </a>
 	                              <a href="editJob?id=${job.id}"> Edit | </a>
 	                              <a href="deleteJob?id=${job.id}"> Remove</a>
-                            </td>
+                             </td>
                           </tr>
                      </c:forEach>     
                         </tbody>
       </table>
-       <a href="newjob?user=${loggedinuser}"> Click to add new jobs here</a>
+       <a href="addnewjob?user=${loggedinuser}" class="btn btn-primary btn-lg" > Click to add new jobs here</a>
+       
 	  </div>
 </body>  
 <script>

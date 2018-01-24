@@ -17,8 +17,10 @@ public interface JobDAO {
 	
 	public Job updateJob(Job job);
 	
-	public int updateJob1(Job job);
+	/*public int updateJob1(Integer id);*/
 	
+	public int updateJob1(int id);
+
 	public List<Job> listActiveJobs();	
 	
 	public int updateJobResponses(Job job);

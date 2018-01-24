@@ -51,8 +51,8 @@ public class JobServiceImpl implements JobService {
 	}
 
 	@Override
-	public int updateJob1(Job job) {
-		return jobdao.updateJob1(job);
+	public int updateJob1(int id) {
+		return jobdao.updateJob1(id);
 	}
 
 	@Override

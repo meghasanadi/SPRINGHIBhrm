@@ -17,7 +17,7 @@ public interface JobService {
 	
 	public Job updateJob(Job job);
 
-	public int updateJob1(Job job);
+	public int updateJob1(int id);
 	
 	public List<Job> listActiveJobs();
 	

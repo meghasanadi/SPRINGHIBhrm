@@ -18,7 +18,7 @@ public class JobRowMapper implements RowMapper<Job> {
 		String job_name;
 		Date date;
 		String keyskills;
-		String job_designation;
+		String location;
 		String job_description;
 		String experience;
 		String job_type;
@@ -38,7 +38,7 @@ public class JobRowMapper implements RowMapper<Job> {
 		description=resultSet.getString("description");
 		keyskills=resultSet.getString("keyskills");
 		date=resultSet.getDate("date");
-		job_designation=resultSet.getString("job_designation");
+		location=resultSet.getString("job_designation");
 		job_description=resultSet.getString("job_description");
 		experience=resultSet.getString("experience");
 		job_type=resultSet.getString("job_type");
@@ -50,12 +50,12 @@ public class JobRowMapper implements RowMapper<Job> {
 		responses=resultSet.getString("responses");
 		postedBy=resultSet.getString("postedBy");
 		
-		job=new Job(id, jobid, job_name, date,keyskills, job_designation, job_description, description,experience, job_type, companyname, Salary, Functionalarea, shortdescription, status, responses,postedBy);
+		job=new Job(id, jobid, job_name, date,keyskills, location, job_description, description,experience, job_type, companyname, Salary, Functionalarea, shortdescription, status, responses,postedBy);
 		job.setId(id);
 		job.setJobid(jobid);
 		job.setJob_name(job_name);
 		job.setKeyskills(keyskills);
-		job.setJob_designation(job_designation);
+		job.setLocation(location);
 		job.setJob_description(job_description);
 		job.setCompanyname(companyname);
 		job.setSalary(Salary);
