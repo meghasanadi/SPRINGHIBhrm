@@ -192,12 +192,16 @@
 					            <tr>
 					                <form:hidden value="Applied" path="applied"/>
 					            </tr>
+					         
 					            </c:forEach>
 					            <c:if test="${edit}">	             
 					            <tr>
-					                <td colspan="2"><input type="submit" value="Apply" class="btn btn-info" ></td>
+					               <br>
+					               <br>
+					               <hr> <td colspan="2"><input type="submit" value="Apply" class="btn btn-info" ></td>
 					            </tr>
 					            <a href="${contextPath}/newuser?jobid=${job.jobid}" class="btn btn-info" style="background-color: #ace600;" role="button">Register and Apply</a>
+					            <hr>
 					            </c:if>
 					       </table>
 				        </form:form>
@@ -209,7 +213,8 @@
 			  </div><!--end post_class()-->
 			
         <div class="col-sm-12">
-          <h2 class="mt-8" align="center">Follow Us</h2>
+          <br>
+          <br><h2 class="mt-8" align="center">Follow Us</h2>
           <div class="text-center center-block">
            
             <br />

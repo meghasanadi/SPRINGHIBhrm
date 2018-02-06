@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
 <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	
+		<link rel="icon" href="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/3d-glossy-orange-orbs-icons-alphanumeric/104887-3d-glossy-orange-orb-icon-alphanumeric-letter-s.png" type="image/x-icon">
+	
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 		<!-- Website Font style -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -24,7 +26,12 @@
 		<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css">
 		<!-- Google Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=latin-ext" rel="stylesheet">
-
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
         <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<style type="text/css">
 					body{font-family: 'Roboto', sans-serif  !important; font-size:13px  !important;font-weight:500 !important;}
@@ -163,11 +170,33 @@
 		      
 		        <a class="navbar-brand" href="http://careers.samcomm.com"/><img src="http://companies.naukri.com/samcomm-careers/wp-content/uploads/sites/1322/2014/11/logo.png" alt="Samcomm Technologies" title="Samcomm Technologies">
 		        </a>
+  
 		      </div>
+		   
 		</nav>
+		 <nav class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.jcbpoint.com:8080/SamcommCareers1/" class="navbar-brand" style="margin-left:100px">Home</a>
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+           
+           
+            <ul class="nav navbar-nav navbar-right" style="margin-right:100px">
+				<h5><%@include file="authheader.jsp" %></h5> 
+            </ul>
+        </div>
+    </nav>
 		
 <div class="container">
- <h5><%@include file="authheader.jsp" %></h5> 
+ 
 <div class="row header" style="color:#00a1ff!important">
 <h3 align="center">Requirements</h3>
 </div>
@@ -195,7 +224,7 @@
                             <td><a href="viewResponses?jobid=${job.jobid}" style="margin-right:20px">${job.responses}</a><a href="refreshresponse?jobid=${job.jobid}"><img border="0" alt="W3Schools" src="http://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Button-Refresh-icon.png" width="25" height="25" ></a>
  
                              <td align="center">
-	                              <a href="editJob2?id=${job.id}">Format | </a>
+	                              <a href="format?id=${job.id}">Format | </a>
 	                              <a href="editJob?id=${job.id}"> Edit | </a>
 	                              <a href="deleteJob?id=${job.id}"> Remove</a>
                              </td>
@@ -203,8 +232,10 @@
                      </c:forEach>     
                         </tbody>
       </table>
+       <br>
+       <hr>
        <a href="addnewjob?user=${loggedinuser}" class="btn btn-primary btn-lg" > Click to add new jobs here</a>
-       
+       <hr>
 	  </div>
 </body>  
 <script>

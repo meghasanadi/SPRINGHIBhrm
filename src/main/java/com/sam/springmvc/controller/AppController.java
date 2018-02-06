@@ -1,6 +1,7 @@
 package com.sam.springmvc.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -90,18 +91,48 @@ public class AppController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView listJob (ModelAndView modelview, ModelMap model) throws IOException {
+	public ModelAndView listJob (ModelAndView modelview, ModelMap model, Job job,HttpServletRequest request,Application app) throws IOException {
 		List<Job> listJob = jobService.getAllJobs();
-		modelview.addObject("listJob", listJob);
+		modelview.addObject("listJob", listJob);  
+		
+		
+		
+		int count=appService.getcountQueryObjectOnlybyPosition(job.getJobid());
+	    jobService.updateResponses(count, job.getJobid());
+	    
+	    System.out.println("jobidddddddddd"+job.getJobid());
+		System.out.println("countttt"+count);
+	    
 		model.addAttribute("loggedinuser", getPrincipal());
 		modelview.setViewName("adminhome_joblist");
 		return modelview;
 	
 	}
 	
+	 
 	@RequestMapping(value="/editJob",method = RequestMethod.GET)  
-    public String editJob(@ModelAttribute("job") Job job, Model model,HttpServletRequest request){
+    public String editJob(@ModelAttribute("job") Job job, Model model,HttpServletRequest request,ModelMap model1){
 		job = jobService.getJob(job.getId());
+		List<String> status = new ArrayList<String>();
+		 status.add("Active");
+		 status.add("Inactive");
+        model1.addAttribute("status", status);
+        
+        List<String> jobtype = new ArrayList<String>();
+        jobtype.add("Contract");
+        jobtype.add("Contract to hire");
+        jobtype.add("Permanant/Fulltime");
+        model1.addAttribute("jobtype", jobtype);
+        
+        List<String> location=new ArrayList<String>();
+        location.add("Anywhere in India");
+        location.add("Bangalore");
+        location.add("Chennai");
+        location.add("Gurgaon");
+        location.add("Hyderabad");
+        location.add("Mumbai");
+        location.add("Pune");
+        model1.addAttribute("location", location);
 		System.out.println("jobid and id :" +job.getJobid()+job.getId());
         model.addAttribute("job", this.jobService.updateJob(job));
         return "addEditnewjob";
@@ -414,6 +445,13 @@ public class AppController {
 		document.setContent(multipartFile.getBytes());
 		document.setUser(user);
 		userDocumentService.saveDocument(document);
+		
+		byte[] bytes = multipartFile.getBytes();
+		String s = new String(bytes);
+		System.out.println("getContentType()"+ multipartFile.getContentType());
+		System.out.println("getBytes"+multipartFile.getBytes());
+		System.out.println("String bte s" + s);
+		
 	}
 		
 

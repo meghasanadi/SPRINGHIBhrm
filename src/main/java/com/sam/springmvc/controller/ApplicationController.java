@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,9 +26,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sam.springmvc.model.Application;
+import com.sam.springmvc.model.FileBucket;
 import com.sam.springmvc.model.Job;
 import com.sam.springmvc.model.User;
 import com.sam.springmvc.model.UserDocument;
@@ -130,17 +133,15 @@ public class ApplicationController {
 	 
 	
 	   @RequestMapping(value = "/viewApplicantDetails", method = RequestMethod.GET)
-		public ModelAndView viewDetails(@RequestParam("user_id") int id,ModelMap map, HttpServletRequest request,Application app) {
-		   
+		public ModelAndView viewDetails(@Valid FileBucket fileBucket,@RequestParam("user_id") int id,ModelMap map, HttpServletRequest request,Application app) throws IOException {
 		    List<UserDocument> documents = userDocumentService.findAllByUserId(id);
 		    map.addAttribute("documents", documents);
-		   
 		    app=appService.getApplication(app.getId());
 			ModelAndView model = new ModelAndView("viewApplicantDetails");
 			model.addObject("app", app);
 			return model;
 		}
-	   
+	 
 	   
 	   @RequestMapping(value = { "/download-document-{docId}" }, method = RequestMethod.GET)
 	    public String downloadDocument(@PathVariable int docId, HttpServletResponse response, HttpServletRequest request) throws IOException {
@@ -196,5 +197,5 @@ public class ApplicationController {
 		return "redirect:/list";
 		   
 	   }
-	   
+	  
 }

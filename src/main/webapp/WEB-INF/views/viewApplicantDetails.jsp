@@ -250,7 +250,9 @@
                     <thead>
                         <tr>
                             <th>File Name</th>
+                           <!--  <th>bytes</th> -->
                             <th>Download</th>
+                          
                             <th width="10"></th>
                             <th width="10"></th>
                         </tr>
@@ -259,6 +261,7 @@
                     <c:forEach items="${documents}" var="doc" varStatus="counter">
                         <tr>
                             <td>${doc.name}</td>
+                           <%--  <td><a href="addd-document-${app.user_id}"><h6>${doc.content}</h6></a></td> --%>
                             <td><a href="<c:url value='/download-document-${doc.id}' />" class="btn btn-success custom-width">download</a></td>
                         </tr>
                     </c:forEach>
@@ -267,6 +270,7 @@
                                
             </div>
          </div>
+         
                
             </div>
           </div>

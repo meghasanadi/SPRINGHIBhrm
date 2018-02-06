@@ -94,7 +94,7 @@ public class JobDAOImpl implements JobDAO {
 
 	@Override
 	public int updateJob1(int id) {
-		String sql="update db1.job_tbl set job_description = (REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(job_description,\"ï??\",'<li>'), \"ï?¶\",'<li>'),\"ï?§\",'<li>'),\"â?¢\",'<li>'),\"ï?¼\",'<li>'),\"-\",'<li>')) where id='"+id+"'"; 
+		String sql="update job_tbl set job_description = (REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(job_description,\"ï??\",'<li>'), \"ï?¶\",'<li>'),\"ï?§\",'<li>'),\"â?¢\",'<li>'),\"ï?¼\",'<li>'),\"-\",'<li>')) where id='"+id+"'"; 
 	    System.out.println(sql);
 		return jdbcTemplate.update(sql); 
 	}

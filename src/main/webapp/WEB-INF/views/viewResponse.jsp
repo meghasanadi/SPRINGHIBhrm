@@ -155,9 +155,38 @@
 					  }
 			</style>
 </head>  
-<body style="margin:20px auto">  
+<body style="margin:20px auto"> 
+
+<nav class="navbar navbar-light bg-light">
+		<div class="container">
+		      
+		        <a class="navbar-brand" href="http://careers.samcomm.com"/><img src="http://companies.naukri.com/samcomm-careers/wp-content/uploads/sites/1322/2014/11/logo.png" alt="Samcomm Technologies" title="Samcomm Technologies">
+		        </a>
+  
+		      </div>
+		   
+		</nav>
+		 <nav class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.jcbpoint.com:8080/SamcommCareers/" class="navbar-brand" style="margin-left:100px">Home</a>
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+           
+           
+            <ul class="nav navbar-nav navbar-right" style="margin-right:100px">
+				<h5><%@include file="authheader.jsp" %></h5> 
+            </ul>
+        </div>
+    </nav> 
 <div class="container">
- <h5><%@include file="authheader.jsp" %></h5> 
 <div class="row header" style="color:#00a1ff!important">
 <h3 align="center">Responses</h3>
 </div>
