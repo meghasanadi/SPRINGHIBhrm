@@ -7,7 +7,7 @@ import com.sam.springmvc.model.Job;
 
 public interface JobService {
 	
-	public void addJobs(Job job);
+	public boolean addJobs(Job job);
 	
 	public List<Job> getAllJobs();
 	

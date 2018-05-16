@@ -7,7 +7,7 @@ import com.sam.springmvc.model.Job;
 
 public interface JobDAO {
     
-	public void addJobs(Job job);
+	public boolean addJobs(Job job);
 	
 	public List<Job> getAllJobs();
 	
@@ -16,8 +16,6 @@ public interface JobDAO {
 	public Job getJob(Integer id);
 	
 	public Job updateJob(Job job);
-	
-	/*public int updateJob1(Integer id);*/
 	
 	public int updateJob1(int id);
 

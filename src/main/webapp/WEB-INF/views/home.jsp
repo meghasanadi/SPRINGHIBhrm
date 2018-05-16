@@ -144,17 +144,9 @@
        
 
     <!-- Header with Background Image -->
-    <header class="business-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-           <!--  <h6 class="display-3 text-center text-white mt-4">Growing Innovation Glowing Values</h6> -->
-          </div>
-        </div>
-      </div>
-    </header>
     
-    <div class="col-xl-9 mx-auto" style="margin-top: 30px; ">
+    
+   <!--  <div class="col-xl-9 mx-auto" style="margin-top: 30px; ">
     <div class="cta">
       <div class="container">
         <div class="row">
@@ -170,10 +162,32 @@
       </div>
     </div>
     </div>
-    </div>
+    </div> -->
+    
+     <!-- <section id="feature" >
+        <div class="container">
+           <div class="center wow fadeInDown">
+                <h2>Features</h2>
+                <p class="lead">SAMCOMM is a privately owned software company that provides a wide range of IT, ITES and outsourcing services with prime focus brought upon design, development, re-engineering, maintenance, support, training and consulting assistance. SAMCOMM renders an unflinching support to all level of companies enabling them to vie in their respective fields with IT enabled services precisely to accelerate its focus on software testing outsourcing and management. Now Samcomm has educational based solutions as yet another strategic area to unwind innovations prompted by its experience in IT industry spanning 15 yrs.</p>
+            </div>
+           </div>
+          </section>   -->
 
     <!-- Page Content -->
     <div class="container">
+    
+    <header class="business-header">
+      
+        <div class="row">
+          <div class="col-lg-8">
+           <!--  <h6 class="display-3 text-center text-white mt-4">Growing Innovation Glowing Values</h6> -->
+          </div>
+        </div>
+      </div>
+    </header>
+    <div>
+    
+     <div class="container">
      <div class="card text-white my-4 text-center">
       <c:if test="${edit1}">
             <span class="well pull-left">

@@ -1,27 +1,17 @@
 package com.sam.springmvc.dao;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
-
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
-
-import com.mysql.jdbc.Statement;
 import com.sam.springmvc.model.Application;
-import com.sam.springmvc.model.Job;
+
 
 @Repository
 public class ApplicationDaoImpl implements ApplicationDao {

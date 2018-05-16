@@ -17,6 +17,7 @@ public class UserRowMapper implements RowMapper<User> {
 		String firstName; 
 		String lastName;
 		String email;
+		String phone;
 		
 		User user;
 		

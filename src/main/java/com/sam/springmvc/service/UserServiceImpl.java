@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sam.springmvc.dao.UserDao;
-import com.sam.springmvc.model.Job;
 import com.sam.springmvc.model.User;
 
 
@@ -50,13 +49,7 @@ public class UserServiceImpl implements UserService{
 			}
 			entity.setFirstName(user.getFirstName());
 			entity.setLastName(user.getLastName());
-			
-		/*	entity.setPhoneno(user.getPhoneno());
-			entity.setLocation(user.getLocation());
-			entity.setCurrentcompany(user.getCurrentcompany());
 		
-			entity.setContent(user.getContent());
-			entity.setUserProfiles(user.getUserProfiles());*/
 		}
 	}
 

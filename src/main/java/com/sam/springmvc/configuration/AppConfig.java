@@ -1,7 +1,5 @@
 package com.sam.springmvc.configuration;
 
-import java.util.Properties;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -11,20 +9,16 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
 
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
-import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.sam.springmvc.converter.RoleToUserProfileConverter;
-import com.sam.springmvc.exceptionhandler.OrderIdNotValidException;
-
 
 @Configuration
 @EnableWebMvc
@@ -94,29 +88,6 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     public void configurePathMatch(PathMatchConfigurer matcher) {
         matcher.setUseRegisteredSuffixPatternMatch(true);
     }
-    
-   /* @Bean
-    HandlerExceptionResolver errorHandler () {
-        SimpleMappingExceptionResolver s =
-                  new SimpleMappingExceptionResolver();
-
-        //exception to view name mapping
-        Properties p = new Properties();
-        p.setProperty(NullPointerException.class.getName(), "npeView");
-        p.setProperty(OrderIdNotValidException.class.getName(),
-                      "OrderIdNotValidView");
-        s.setExceptionMappings(p);
-
-        //mapping status code with view response.
-        s.addStatusCode("npeView", 404);
-
-        //setting default error view
-        s.setDefaultErrorView("defaultErrorView");
-        //setting default status code
-        s.setDefaultStatusCode(400);
-
-        return s;
-    }*/
-    
+       
 }
 

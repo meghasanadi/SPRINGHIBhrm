@@ -4,11 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
-
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.SharedSessionContract;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -42,16 +38,20 @@ public class JobDAOImpl implements JobDAO {
 	}
 
 	@Override
-	public void addJobs(Job job) {
-		sessionFactory.getCurrentSession().saveOrUpdate(job);
-		
+	public boolean addJobs(Job job) {
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(job);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
 	public List<Job> getAllJobs() {
-		
-/*		return sessionFactory.getCurrentSession().createQuery("FROM Job job WHERE active=:active").list();
-*/		return sessionFactory.getCurrentSession().createQuery("from Job").list();
+
+		return sessionFactory.getCurrentSession().createQuery("from Job").list();
 
 	}
 	
@@ -67,15 +67,6 @@ public class JobDAOImpl implements JobDAO {
 		return job;
 		
 	}
-	/*@Override
-	public Job updateJob(Job job) {
-	
-		Session session = sessionFactory.openSession();
-
-		SQLQuery insertsqlQuery = session.createSQLQuery("update db1.job_tbl set job_description = REPLACE(job_description,\"ï?¼\",'.\\r\\n')");     
-	    insertsqlQuery.executeUpdate();
-					return job;
-	}*/
 	
 	@Override
 	public void deleteJob(int jobid) {

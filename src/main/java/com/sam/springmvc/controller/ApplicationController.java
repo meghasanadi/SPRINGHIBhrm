@@ -61,7 +61,7 @@ public class ApplicationController {
 	private UserDocumentService userDocumentService;
 	
 	@RequestMapping(value =  "/welcome**", method = RequestMethod.GET)
-	public ModelAndView welcome(ModelMap model1, @RequestParam("id") String id) throws IOException {
+	public ModelAndView welcome(ModelMap model1, @RequestParam("id") String id) {
 		 
 		
 		 ModelAndView model = new ModelAndView();
@@ -81,7 +81,7 @@ public class ApplicationController {
 	
 
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
-	public ModelAndView saveEmployee(ModelAndView model,ModelMap map,@ModelAttribute Application app) throws Exception {
+	public ModelAndView saveEmployee(ModelAndView model,ModelMap map,@ModelAttribute Application app){
        
 		int count=appService.getcountQueryObject(app);
 		System.out.println("count :"+count);
@@ -104,8 +104,6 @@ public class ApplicationController {
 		map.addAttribute("loggedinuser", getPrincipal());
 		model.setViewName("home");
 		return model;
-		
-		/*return "redirect:/";*/
 	}
 	
 	private String getPrincipal(){
@@ -122,7 +120,7 @@ public class ApplicationController {
 	
 	 
 	 @RequestMapping(value = "/viewResponses", method = RequestMethod.GET)
-		public ModelAndView viewResponses(ModelAndView modelview, ModelMap model,@RequestParam("jobid") String jobid) throws IOException {
+		public ModelAndView viewResponses(ModelAndView modelview, ModelMap model,@RequestParam("jobid") String jobid) {
 			
 		    List<Application> listapp=appService.getResponses(jobid);
 			modelview.addObject("listapp", listapp);
@@ -133,7 +131,7 @@ public class ApplicationController {
 	 
 	
 	   @RequestMapping(value = "/viewApplicantDetails", method = RequestMethod.GET)
-		public ModelAndView viewDetails(@Valid FileBucket fileBucket,@RequestParam("user_id") int id,ModelMap map, HttpServletRequest request,Application app) throws IOException {
+		public ModelAndView viewDetails(@Valid FileBucket fileBucket,@RequestParam("user_id") int id,ModelMap map, HttpServletRequest request,Application app) {
 		    List<UserDocument> documents = userDocumentService.findAllByUserId(id);
 		    map.addAttribute("documents", documents);
 		    app=appService.getApplication(app.getId());
@@ -156,23 +154,23 @@ public class ApplicationController {
 	    }
 	   
 	   @RequestMapping(value =  "/addnewjob", method = RequestMethod.GET)
-		public ModelAndView addnewjob(ModelMap model1,ModelAndView model) throws IOException {
+		public ModelAndView addnewjob(ModelMap model1,ModelAndView model) {
 
 		     Job job = new Job();
 			 model.addObject("job", job);
 		   
-			 List<String> status = new ArrayList<String>();
+			 List<String> status = new ArrayList<>();
 			 status.add("Active");
 			 status.add("Inactive");
 	         model1.addAttribute("status", status);
 	         
-	         List<String> jobtype = new ArrayList<String>();
+	         List<String> jobtype = new ArrayList<>();
 	         jobtype.add("Contract");
 	         jobtype.add("Contract to hire");
 	         jobtype.add("Permanant/Fulltime");
 	         model1.addAttribute("jobtype", jobtype);
 	         
-	         List<String> location=new ArrayList<String>();
+	         List<String> location=new ArrayList<>();
 	         location.add("Anywhere in India");
 	         location.add("Bangalore");
 	         location.add("Chennai");
