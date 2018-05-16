@@ -13,14 +13,15 @@ import com.sam.springmvc.model.Job;
 
 @Service
 @Transactional
+
 public class JobServiceImpl implements JobService {
 
 	@Autowired
 	private JobDAO jobdao;
 	
 	@Override
-	public void addJobs(Job job) {
-		jobdao.addJobs(job);
+	public boolean addJobs(Job job) {
+		return jobdao.addJobs(job);
 		
 	}
 

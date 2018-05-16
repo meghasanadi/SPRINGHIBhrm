@@ -49,6 +49,9 @@ import com.sam.springmvc.service.UserService;
 
 public class AppController {
 
+	String redirect1="redirect:/list";
+	String registrationsuccess= "registrationsuccess";
+	
 	@Autowired
 	UserService userService;
 	
@@ -80,7 +83,7 @@ public class AppController {
 	 */
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView listJob1(ModelAndView model,ModelMap modelmap) throws IOException {
+	public ModelAndView listJob1(ModelAndView model,ModelMap modelmap){
 		List<Job> listJob = jobService.listActiveJobs();
 		model.addObject("listJob", listJob);
 		modelmap.addAttribute("edit1", false);
@@ -91,7 +94,7 @@ public class AppController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView listJob (ModelAndView modelview, ModelMap model, Job job,HttpServletRequest request,Application app) throws IOException {
+	public ModelAndView listJob (ModelAndView modelview, ModelMap model, Job job,HttpServletRequest request,Application app){
 		List<Job> listJob = jobService.getAllJobs();
 		modelview.addObject("listJob", listJob);  
 		
@@ -113,18 +116,18 @@ public class AppController {
 	@RequestMapping(value="/editJob",method = RequestMethod.GET)  
     public String editJob(@ModelAttribute("job") Job job, Model model,HttpServletRequest request,ModelMap model1){
 		job = jobService.getJob(job.getId());
-		List<String> status = new ArrayList<String>();
+		List<String> status = new ArrayList<>();
 		 status.add("Active");
 		 status.add("Inactive");
         model1.addAttribute("status", status);
         
-        List<String> jobtype = new ArrayList<String>();
+        List<String> jobtype = new ArrayList<>();
         jobtype.add("Contract");
         jobtype.add("Contract to hire");
         jobtype.add("Permanant/Fulltime");
         model1.addAttribute("jobtype", jobtype);
         
-        List<String> location=new ArrayList<String>();
+        List<String> location=new ArrayList<>();
         location.add("Anywhere in India");
         location.add("Bangalore");
         location.add("Chennai");
@@ -141,7 +144,7 @@ public class AppController {
 	@RequestMapping(value = "/deleteJob", method = RequestMethod.GET)
 	public ModelAndView deleteJob(HttpServletRequest request,Job job) {
 	    jobService.deleteJob(job.getId());
-		return new ModelAndView("redirect:/list");
+		return new ModelAndView(redirect1);
 	}
 
 	
@@ -149,7 +152,7 @@ public class AppController {
 	public ModelAndView credentials(ModelAndView model, ModelMap model1) {
 		Job job = new Job();
 		model.addObject("job", job);
-		model.setViewName("registrationsuccess");
+		model.setViewName(registrationsuccess);
 		model1.addAttribute("loggedinuser", getPrincipal());
 		return model;
 	}
@@ -166,7 +169,7 @@ public class AppController {
 			}
 			
 			jobService.addJobs(job);
-			return new ModelAndView("redirect:/list");
+			return new ModelAndView(redirect1);
 	  }
 	
 
@@ -227,8 +230,7 @@ public class AppController {
 		
 		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " registered successfully");
 		model.addAttribute("loggedinuser", getPrincipal());
-		//return "success";
-		return "registrationsuccess";
+		return registrationsuccess;
 	}
 
 	/**
@@ -254,20 +256,11 @@ public class AppController {
 		if (result.hasErrors()) {
 			return "registration";
 		}
-
-		/*//Uncomment below 'if block' if you WANT TO ALLOW UPDATING SSO_ID in UI which is a unique key to a User.
-		if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
-			FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
-		    result.addError(ssoError);
-			return "registration";
-		}*/
-
-
 		userService.updateUser(user);
 
 		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " updated successfully");
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "registrationsuccess";
+		return registrationsuccess;
 	}
 
 	
@@ -277,7 +270,7 @@ public class AppController {
 	@RequestMapping(value = { "/delete-user-{ssoId}" }, method = RequestMethod.GET)
 	public String deleteUser(@PathVariable String ssoId) {
 		userService.deleteUserBySSO(ssoId);
-		return "redirect:/list";
+		return redirect1;
 	}
 	
 
@@ -321,7 +314,6 @@ public class AppController {
 	public String logoutPage (HttpServletRequest request, HttpServletResponse response){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null){    
-			//new SecurityContextLogoutHandler().logout(request, response, auth);
 			persistentTokenBasedRememberMeServices.logout(request, response, auth);
 			SecurityContextHolder.getContext().setAuthentication(null);
 		}
@@ -459,7 +451,7 @@ public class AppController {
 		public String refreshresponse(HttpServletRequest request,Job job,ModelMap map,Application app,@RequestParam("jobid") String jobid) {
 		    int count=appService.getcountQueryObjectOnlybyPosition(jobid);
 		    jobService.updateResponses(count, jobid);
-			return "redirect:/list";
+			return redirect1;
 		}
 		
 

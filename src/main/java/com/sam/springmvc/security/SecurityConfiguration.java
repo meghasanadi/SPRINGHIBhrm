@@ -1,4 +1,4 @@
-package com.sam.springmvc.security;
+ package com.sam.springmvc.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sam.springmvc.dao.ApplicationDao;
 import com.sam.springmvc.model.Application;
-import com.sam.springmvc.model.Job;
+
 
 @Service
 @Transactional
